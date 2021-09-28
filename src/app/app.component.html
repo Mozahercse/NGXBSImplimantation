@@ -1,0 +1,318 @@
+<div>
+  <div class="row">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <h4>Acordion</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <accordion [isAnimated]="true">
+            <accordion-group heading="Static Header">
+              This content is straight in the template.
+            </accordion-group>
+            <accordion-group heading="Another group">
+              <p>Some content</p>
+            </accordion-group>
+            <accordion-group heading="Another group">
+              <p>Some content</p>
+            </accordion-group>
+            <accordion-group heading="Another group">
+              <p>Some content</p>
+            </accordion-group>
+          </accordion>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div lang="card-title">
+            <h4>Alerts </h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>If you missed alert under me, just press <code>Add more</code> button</p>
+          <div *ngFor="let alert of alerts">
+            <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}
+            </alert>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="add()">Add more</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <h4>Buttons</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <h5>Checkbox Button</h5>
+          <pre class="card card-block card-header">{{checkModel | json}}</pre>
+
+          <div class="btn-group">
+
+            <label class="btn btn-primary" btnCheckbox tabindex="0" role="button"
+              [(ngModel)]="checkModel.left">Left</label>
+            <label class="btn btn-primary" btnCheckbox tabindex="0" role="button"
+              [(ngModel)]="checkModel.middle">Middle</label>
+            <label class="btn btn-primary" btnCheckbox tabindex="0" role="button"
+              [(ngModel)]="checkModel.right">Right</label>
+          </div>
+
+          <hr />
+          <h5>Radio Button</h5>
+          <pre class="card card-block card-header">{{radioModel || 'null'}}</pre>
+          <div class="btn-group">
+            <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="Left" tabindex="0"
+              role="button">Left</label>
+            <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="Middle" tabindex="0"
+              role="button">Middle</label>
+            <label class="btn btn-primary" [(ngModel)]="radioModel" btnRadio="Right" tabindex="0"
+              role="button">Right</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <h4>Carousel</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <carousel>
+            <slide>
+              <div class="text-center py-5 bg-dark text-white">
+                <h2>First custom content</h2>
+                <div class="lead">
+                  <h3>First slide label</h3>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+              </div>
+            </slide>
+            <slide>
+              <div class="text-center py-5 bg-dark text-white">
+                <h2>Second custom content</h2>
+                <div class="lead">
+                  <h3>Second slide label</h3>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+              </div>
+            </slide>
+            <slide>
+              <div class="text-center py-5 bg-dark text-white">
+                <h2>Third custom content</h2>
+                <div class="lead">
+                  <h3>Third slide label</h3>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum. </p>
+                </div>
+              </div>
+            </slide>
+          </carousel>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <h4>Collapse</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <button type="button" class="btn btn-primary" (click)="collapse.show()" aria-controls="collapseManual">Show
+            content
+          </button>
+          <button type="button" class="btn btn-primary" (click)="collapse.hide()" aria-controls="collapseManual">Hide
+            content
+          </button>
+          <hr>
+          <div id="collapseManual" #collapse="bs-collapse" [collapse]="isOpen">
+            <div class="well well-lg card card-block card-header">Some content</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-10">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <h4>Date & Time Picker</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-xs-12 col-12 col-md-4 form-group">
+              <label>Date Picker:</label><br />
+              <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker
+                [bsConfig]="{ showTodayButton: true, todayPosition: 'left',showClearButton: true, clearPosition: 'right', adaptivePosition: true,dateInputFormat: 'DD-MMM-YYYY',containerClass:'theme-dark-blue',returnFocusToInput: true }">
+            </div>
+            <div class="col-xs-12 col-12 col-md-4 form-group">
+              <label>Date Range Picker:</label><br />
+              <input type="text" placeholder="Daterangepicker" class="form-control" bsDaterangepicker
+                [bsConfig]="{ adaptivePosition: true,dateInputFormat: 'DD-MM-YYYY',returnFocusToInput: true }"
+                [outsideClick]="true">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <timepicker [(ngModel)]="mytime" [showMeridian]="ismeridian"></timepicker>
+
+              <pre class="alert alert-info">Time is: {{mytime}}</pre>
+
+              <br>
+
+              <button type="button" class="btn btn-info" (click)="toggleMode()">12H / 24H</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <h4>DropDown</h4>
+          </div>
+          <div class="card-body">
+            <div class="btn-group" dropdown [isDisabled]="disabled">
+              <button id="button-disabled-menu" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                aria-controls="dropdown-disabled-menu">
+                Button dropdown <span class="caret"></span>
+              </button>
+              <ul id="dropdown-disabled-menu" *dropdownMenu class="dropdown-menu" role="menu"
+                aria-labelledby="button-disabled-menu">
+                <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+                <li role="menuitem"><a class="dropdown-item" href="#">Another action</a>
+                </li>
+                <li role="menuitem"><a class="dropdown-item" href="#">Something else
+                    here</a></li>
+                <li class="divider dropdown-divider"></li>
+                <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+                </li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-warning" (click)="disabled = !disabled">
+              Enable/Disable
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <h4>Select List</h4>
+          </div>
+          <div class="card-body">
+
+            <ngx-select [allowClear]="true"
+            [(ngModel)]="selectValue" [items]="items" placeholder="No city selected">
+            </ngx-select>
+            <div class="alert alert-secondary">
+              <pre>{{selectValue}}</pre>
+            </div>
+
+
+            <!-- <ngx-select [formControl]="ngxControl"
+        [allowClear]="true"
+        [defaultValue]="doNgxDefault()"
+        [items]="items"
+        placeholder="No city selected"
+        (typed)="inputTyped('ngx-select', $event)"
+        (focus)="doFocus()"
+        (blur)="doBlur()"
+        (open)="doOpen()"
+        (close)="doClose()"
+        (select)="doSelect($event)"
+        (remove)="doRemove($event)"
+        (selectionChanges)="doSelectOptions($event)">
+</ngx-select>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <h4>Multi Select List</h4>
+          </div>
+          <div class="card-body">
+            <ngx-select [allowClear]="true" [autoClearSearch]="true" [multiple]="true" [(ngModel)]="selectValue"
+              [items]="items" placeholder="No city selected">
+            </ngx-select>
+            <div class="alert alert-secondary">
+              <pre>{{selectValue}}</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <h4>Modals</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <app-CompModal></app-CompModal>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <h4>Pagenation</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <app-CompPagenation></app-CompPagenation>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <h4>ToolTip</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <app-CompToolTip></app-CompToolTip>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="row">
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><h4>Tabs</h4></div>
+    </div>
+    <div class="card-body">
+      <app-CompTabs></app-CompTabs>
+
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+<router-outlet></router-outlet>

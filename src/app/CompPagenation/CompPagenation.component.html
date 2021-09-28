@@ -1,0 +1,6 @@
+<pagination [boundaryLinks]="true" [(ngModel)]="currentPage" [totalItems]="77" (numPages)="smallnumPages = $event"
+            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+
+</pagination>
+
+<pre class="card card-block card-header mb-3">The selected page no: {{currentPage}}/{{smallnumPages}}</pre>
